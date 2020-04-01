@@ -1,0 +1,72 @@
+######  #######    #    ######  #     # #######
+#     # #         # #   #     # ##   ## #
+#     # #        #   #  #     # # # # # #
+######  #####   #     # #     # #  #  # #####
+#   #   #       ####### #     # #     # #
+#    #  #       #     # #     # #     # #
+#     # ####### #     # ######  #     # #######
+---------------------------------------------------<3
+Note: This is my final README handin.
+
+Overview:
+	Hello! These are my classes for Sketchy and they interact in these ways:
+
+		App - Main class that starts the game and instantiates top level class/object, Pane Organizer.
+		PaneOrganizer - Puts Control and Sketchy onto one larger pane.
+		Sketchy - Delegates user/mouse interaction to respective shapes. 
+		Control - Creates all the buttons and the color picker. Contains all of the Key Handlers for the 
+		buttons and takes care of their key input.
+		SketchyRectangle - Creates instance of rectangle and contains all the logic for dealing with its
+		shape, inherited from the SketchyShape and Saveable interfaces.
+		SketchyEllipse - Creates instance of ellipse and contains all the logic for dealing with its
+		shape, inherited from the SketchyShape and Saveable interfaces.
+		CurvedLine - Creates an instance of polyline and gets all the points. 
+		Layer - Has getter methods that keeps of of the indicies of ObservableList, Saveable Arraylist,
+		and SketchyShape ArrayList for object. 
+		CreateAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is created. 
+		DeleteAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is deleted. Contains instance of layer class.
+		Fill - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is filled. 
+		LowerAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is lowered. Contains instance of layer class.
+		MoveAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is moved. 
+		RaiseAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is raised. Contains instance of layer class.
+		ResizeAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is resized. 
+		RotateAShape - Inherits Command Interface and contains undo and redo commands. Instantiated
+		when new shape is rotated. 
+		Constants - Contains constants that I use when setting up the GUI of Sketchy. 
+	
+	Furthermore, I have three interfaces:
+		
+		SketchyShapes - Interface for SketchyRectangles and SketchyEllipses. Contains methods
+		pertaining to the shape.
+		Saveable - Interface for all Saveable objects (SketchyRectangles, CurvedLines, and
+		SketchyEllipses). Contains save and load methods. 
+		Command - Interface for all commands. Contains save and load methods. 
+		
+	And one Enum:
+	
+		SketchyAction - Sets an enum to each individual action described by the buttons. 
+		
+Design Choices:
+	- Top level object PaneOrganizer encapsulates both Control and Sketchy so that the two classes can
+	communicate with each other. 
+	- I have a layer class that gets the indexes of the appropriate ArrayLists, then I created a method
+	within my Sketchy class that returns the indicies. The RaiseAShape, LowerAshape, and Delete command
+	classes pass in an instance of layer. 
+	- My SketchyShape interface inherits from Saveables, so all SketchyShapes are saveable. 
+	- The SketchyShape Interface includes all of the commands such as rotatePoint, rotate, etc, that
+	my shapes can use. 
+	- Each of the individual command classes are in charge of their own save and load methods as do so 
+	in different ways.
+	- Can iterate through the Saveable Arraylist when saving and loading because all objects are added
+	to the arraylist when created, so the layering of the objects will be preserved. 
+	
+Known Bugs:
+	None!
+	
